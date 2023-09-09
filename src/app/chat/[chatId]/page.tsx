@@ -1,4 +1,5 @@
 import ChatSidebar from '@/components/ChatSidebar'
+import PDFViewer from '@/components/PDFViewer'
 import { db } from '@/lib/db'
 import { chats } from '@/lib/db/schema'
 import { auth } from '@clerk/nextjs'
@@ -25,14 +26,17 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
     return redirect('/')
   }
 
+  const currentChat = _chats.find((chat) => chat.id === parseInt(chatId))
+  
   return (
     <div className="flex max-h-screen overflow-scroll">
       <div className="flex w-full max-h-screen overflow-scroll">
         <div className="flex-[1] max-w-xs">
           <ChatSidebar chats={_chats} chatId={parseInt(chatId)} isPro={false} />
         </div>
-        {/* pdf viewer */}
-        <div className="max-h-screen p-4 oveflow-scroll flex-[5]"></div>
+        <div className="max-h-screen p-4 oveflow-scroll flex-[5]">
+          <PDFViewer pdfUrl={currentChat?.pdfUrl || ''} />
+        </div>
         {/* chat component */}
         <div className="flex-[3] border-l-4 border-l-slate-200"></div>
       </div>
