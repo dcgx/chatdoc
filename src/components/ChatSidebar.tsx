@@ -1,20 +1,21 @@
-'use client'
-import { DrizzleChat } from '@/lib/db/schema'
-import Link from 'next/link'
-import React from 'react'
-import { Button } from './ui/button'
-import { MessageCircle, PlusCircle } from 'lucide-react'
-import { cn } from '@/lib/utils'
-import axios from 'axios'
+"use client";
+import { DrizzleChat } from "@/lib/db/schema";
+import Link from "next/link";
+import React from "react";
+import { Button } from "./ui/button";
+import { MessageCircle, PlusCircle } from "lucide-react";
+import { cn } from "@/lib/utils";
+import axios from "axios";
+import SubscriptionButton from "./SubcriptionButton";
 
 type Props = {
-  chats: DrizzleChat[]
-  chatId: number
-  isPro: boolean
-}
+  chats: DrizzleChat[];
+  chatId: number;
+  isPro: boolean;
+};
 
 const ChatSidebar = ({ chats, chatId, isPro }: Props) => {
-  const [loading, setLoading] = React.useState(false)
+  const [loading, setLoading] = React.useState(false);
 
   return (
     <div className="w-full h-screen p-4 text-gray-200 bg-gray-900">
@@ -29,9 +30,9 @@ const ChatSidebar = ({ chats, chatId, isPro }: Props) => {
         {chats.map((chat) => (
           <Link key={chat.id} href={`/chat/${chat.id}`}>
             <div
-              className={cn('rounded-lg p-3 text-slate-300 flex items-center', {
-                'bg-blue-600 text-white': chat.id === chatId,
-                'hover:text-white': chat.id !== chatId,
+              className={cn("rounded-lg p-3 text-slate-300 flex items-center", {
+                "bg-blue-600 text-white": chat.id === chatId,
+                "hover:text-white": chat.id !== chatId,
               })}
             >
               <MessageCircle className="mr-2" />
@@ -48,9 +49,10 @@ const ChatSidebar = ({ chats, chatId, isPro }: Props) => {
           <Link href="/">Home</Link>
           <Link href="/">Source</Link>
         </div>
+        <SubscriptionButton isPro={isPro} />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ChatSidebar
+export default ChatSidebar;
