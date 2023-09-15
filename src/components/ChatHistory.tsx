@@ -1,26 +1,23 @@
-"use client";
-import { DrizzleChat } from "@/lib/db/schema";
-import Link from "next/link";
-import React from "react";
-import { Button } from "./ui/button";
-import { MessageCircle, PlusCircle } from "lucide-react";
-import { cn } from "@/lib/utils";
-import axios from "axios";
-import SubscriptionButton from "./SubcriptionButton";
+'use client'
+import { DrizzleChat } from '@/lib/db/schema'
+import Link from 'next/link'
+import React from 'react'
+import { Button } from './ui/button'
+import { MessageCircle, PlusCircle } from 'lucide-react'
+import { cn } from '@/lib/utils'
+import SubscriptionButton from './SubcriptionButton'
 
 type Props = {
-  chats: DrizzleChat[];
-  chatId: number;
-  isPro: boolean;
-};
+  chats: DrizzleChat[]
+  chatId: number
+  isPro: boolean
+}
 
-const ChatSidebar = ({ chats, chatId, isPro }: Props) => {
-  const [loading, setLoading] = React.useState(false);
-
+const ChatHistory = ({ chats, chatId, isPro }: Props) => {
   return (
     <div className="w-full h-screen p-4 text-gray-200 bg-gray-900">
       <Link href="/">
-        <Button className="w-full border-dashed border-white border">
+        <Button className="w-full border-white border">
           <PlusCircle className="mr-2 w-4 h-4" />
           New Chat
         </Button>
@@ -30,9 +27,9 @@ const ChatSidebar = ({ chats, chatId, isPro }: Props) => {
         {chats.map((chat) => (
           <Link key={chat.id} href={`/chat/${chat.id}`}>
             <div
-              className={cn("rounded-lg p-3 text-slate-300 flex items-center", {
-                "bg-blue-600 text-white": chat.id === chatId,
-                "hover:text-white": chat.id !== chatId,
+              className={cn('rounded-lg p-3 text-slate-300 flex items-center', {
+                'bg-blue-600 text-white': chat.id === chatId,
+                'hover:text-white': chat.id !== chatId,
               })}
             >
               <MessageCircle className="mr-2" />
@@ -52,7 +49,7 @@ const ChatSidebar = ({ chats, chatId, isPro }: Props) => {
         <SubscriptionButton isPro={isPro} />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ChatSidebar;
+export default ChatHistory

@@ -21,14 +21,15 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
     return redirect('/sign-in')
   }
   const _chats = await db.select().from(chats).where(eq(chats.userId, userId))
-  if (!_chats) {
-    return redirect('/')
-  }
-  if (!_chats.find((chat) => chat.id === parseInt(chatId))) {
-    return redirect('/')
-  }
+  console.log({ userId, _chats })
+  //   if (!_chats) {
+  //     return redirect('/')
+  //   }
+  //   if (!_chats.find((chat) => chat.id === parseInt(chatId))) {
+  //     return redirect('/')
+  //   }
 
-  const currentChat = _chats.find((chat) => chat.id === parseInt(chatId))
+  //   const currentChat = _chats.find((chat) => chat.id === parseInt(chatId))
   const isPro = await checkSubscription()
 
   return (
@@ -37,12 +38,12 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
         <div className="flex-[1] max-w-xs">
           <ChatHistory chats={_chats} chatId={parseInt(chatId)} isPro={isPro} />
         </div>
-        <div className="max-h-screen p-4 oveflow-scroll flex-[5]">
+        {/* <div className="max-h-screen p-4 oveflow-scroll flex-[5]">
           <PDFViewer pdfUrl={currentChat?.pdfUrl || ''} />
         </div>
         <div className="flex-[3] border-l-4 border-l-slate-200">
           <Chat chatId={parseInt(chatId)} />
-        </div>
+        </div> */}
       </div>
     </div>
   )
