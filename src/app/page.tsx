@@ -21,7 +21,7 @@ export default async function Home() {
               <UserButton afterSignOutUrl="/" />
             </div>
 
-            <p className="max-w-xl mt-1 text-lg text-slate-600 mt-2">
+            <p className="max-w-xl text-lg text-slate-600 mt-2">
               ChatDOC is a ChatGPT-based file-reading assistant that can quickly
               extract, locate, and summarize information from PDF documents
             </p>
