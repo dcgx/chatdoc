@@ -69,10 +69,11 @@ export const FileUpload = () => {
   })
 
   return (
-    <div className="p-2 bg-white rounded-xl">
+    <div className="p-2 py-4  rounded-xl w-full mx-auto">
       <div
         {...getRootProps({
-          className: 'p-2 border-2 border-gray-300 border-dashed rounded-xl',
+          className:
+            'p-2 bg-slate-100 hover:bg-slate-200 cursor-pointer border-2 border-gray-300 border rounded-xl',
         })}
       >
         <input {...getInputProps()} />
