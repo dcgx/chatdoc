@@ -7,8 +7,8 @@ import { Toaster } from 'react-hot-toast'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'ChatPDF',
-  description: 'ChatPDF is a web app that allows learn your PDF files.',
+  title: 'Chat.doc',
+  description: 'ChatDOC is a web app that allows learn your PDF files. Soon you will be able to learn your DOCX files too.',
 }
 
 export default function RootLayout({
