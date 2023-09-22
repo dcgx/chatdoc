@@ -24,11 +24,11 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
   if (!_chats) {
     return redirect('/')
   }
-  if (!_chats.find((chat) => chat.id === parseInt(chatId))) {
+  if (!_chats.find((chat) => chat.id === chatId)) {
     return redirect('/')
   }
 
-  const currentChat = _chats.find((chat) => chat.id === parseInt(chatId))
+  const currentChat = _chats.find((chat) => chat.id === chatId)
   const isPro = await checkSubscription()
 
   return (
