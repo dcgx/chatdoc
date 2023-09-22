@@ -1,9 +1,9 @@
 import { Button } from '@/components/ui/button'
+import { FileUpload } from '@/components/FileUpload'
 import { UserButton, auth } from '@clerk/nextjs'
 import Link from 'next/link'
 
 import { LogIn } from 'lucide-react'
-import { FileUpload } from '@/components/FileUpload'
 
 export default async function Home() {
   const { userId } = await auth()
@@ -26,7 +26,7 @@ export default async function Home() {
               extract, locate, and summarize information from PDF documents
             </p>
 
-            <div className="flex my-5">
+            {/* <div className="flex my-5">
               {isAuthenticated ? (
                 <Button>Got to Chats</Button>
               ) : (
@@ -37,22 +37,11 @@ export default async function Home() {
                   </Button>
                 </Link>
               )}
-            </div>
-
-            <div className="my-5">{/* <img /> */}</div>
-
-            {/* <div className="w-full mt-4">
-              {isAuthenticated ? (
-                <FileUpload />
-              ) : (
-                <Link href={'/signin'}>
-                  <Button>
-                    Login to get Started!
-                    <LogIn className="w-4 h-4 ml-2" />
-                  </Button>
-                </Link>
-              )}
             </div> */}
+
+            <div>
+              <FileUpload width={1200} height={300} />
+            </div>
           </div>
         </div>
       </div>
