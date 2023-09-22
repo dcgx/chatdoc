@@ -5,13 +5,14 @@ import {
     serial,
     text,
     timestamp,
+    uuid,
     varchar,
 } from "drizzle-orm/pg-core";
 
 export const userSystemEnum = pgEnum("user_system_enum", ["system", "user"]);
 
 export const chats = pgTable("chats", {
-    id: serial("id").primaryKey(),
+    id: uuid("id").primaryKey().defaultRandom(),
     pdfName: text("pdf_name").notNull(),
     pdfUrl: text("pdf_url").notNull(),
     createdAt: timestamp("created_at").notNull().defaultNow(),

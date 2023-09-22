@@ -26,12 +26,10 @@ export const FileUpload = ({ width = 200, height = 0 }: Props) => {
       fileKey: string
       fileName: string
     }) => {
-      console.log(fileKey, fileName, '?????')
-      const response = await axios.post('/api/create-chat', {
+      const response = await axios.post('/api/chat/create', {
         fileKey,
         fileName,
       })
-      console.log(response, 'response')
       return response.data
     },
   })
@@ -78,7 +76,7 @@ export const FileUpload = ({ width = 200, height = 0 }: Props) => {
       <div
         {...getRootProps({
           className:
-            'p-2 bg-white grid place-content-center cursor-pointer border-2 border-gray-100 border rounded-xl shadow-md',
+            'p-2 bg-white grid place-content-center cursor-pointer border-2 border-gray-100 border rounded-xl shadow',
         })}
         style={{ height: `${height}px`, width: `${width}px` }}
       >
