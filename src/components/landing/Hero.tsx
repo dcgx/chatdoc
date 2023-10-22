@@ -1,3 +1,5 @@
+import { FileUpload } from '../FileUpload'
+
 export default function Hero() {
   return (
     <section className="relative">
@@ -81,7 +83,9 @@ export default function Hero() {
             </div>
           </div>
 
-          <div>Upload Your Document</div>
+          <div className="relative z-10" data-aos="zoom-y-out">
+            <FileUpload />
+          </div>
         </div>
       </div>
     </section>

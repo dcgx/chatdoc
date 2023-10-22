@@ -11,6 +11,10 @@ import Link from 'next/link'
 import { LogIn } from 'lucide-react'
 import Hero from '@/components/landing/Hero'
 import { Metadata } from 'next'
+import Features from '@/components/landing/Features'
+import FeaturesBlocks from '@/components/landing/FeaturesBlocks'
+import Testimonials from '@/components/landing/Testimonials'
+import Newsletter from '@/components/landing/Newsletter'
 
 export default async function Home() {
   const { userId } = await auth()
@@ -19,6 +23,10 @@ export default async function Home() {
   return (
     <main>
       <Hero />
+      <Features />
+      <FeaturesBlocks />
+      <Testimonials />
+      <Newsletter />
     </main>
   )
 }

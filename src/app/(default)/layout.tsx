@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import Footer from '@/components/layout/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,5 +23,10 @@ export default function DefaultLayout({
     })
   })
 
-  return <main>{children}</main>
+  return (
+    <>
+      <main>{children}</main>
+      <Footer />
+    </>
+  )
 }

@@ -11,11 +11,10 @@ import toast from 'react-hot-toast'
 import { useRouter } from 'next/navigation'
 
 type Props = {
-  width?: number
   height?: number
 }
 
-export const FileUpload = ({ width = 200, height = 0 }: Props) => {
+export const FileUpload = ({ height = 250 }: Props) => {
   const router = useRouter()
   const [isUploading, setIsUploading] = React.useState(false)
   const { mutate, isLoading } = useMutation({
@@ -76,9 +75,9 @@ export const FileUpload = ({ width = 200, height = 0 }: Props) => {
       <div
         {...getRootProps({
           className:
-            'p-2 bg-white grid place-content-center cursor-pointer border-2 border-gray-100 border rounded-xl shadow',
+            'p-2 bg-white grid place-content-center cursor-pointer border-2 border-gray-100 border rounded-xl shadow w-full',
         })}
-        style={{ height: `${height}px`, width: `${width}px` }}
+        style={{ height: `${height}px`,  }}
       >
         <input {...getInputProps()} />
         {isUploading || isLoading ? (
