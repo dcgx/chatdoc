@@ -1,6 +1,10 @@
+import { auth } from '@clerk/nextjs'
 import { FileUpload } from '../FileUpload'
 
-export default function Hero() {
+export default async function Hero() {
+  const { userId } = await auth()
+  const isAuthenticated = !!userId
+
   return (
     <section className="relative">
       {/* Illustration behind hero content */}
@@ -58,34 +62,38 @@ export default function Hero() {
                 quickly extract, locate, and summarize information from PDF
                 documents
               </p>
-              <div
-                className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center"
-                data-aos="zoom-y-out"
-                data-aos-delay="300"
-              >
-                <div>
-                  <a
-                    className="btn text-white bg-blue-600 hover:bg-blue-700 w-full mb-4 sm:w-auto sm:mb-0"
-                    href="#0"
-                  >
-                    Start free trial
-                  </a>
+              {!isAuthenticated && (
+                <div
+                  className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center"
+                  data-aos="zoom-y-out"
+                  data-aos-delay="300"
+                >
+                  <div>
+                    <a
+                      className="btn text-white bg-blue-600 hover:bg-blue-700 w-full mb-4 sm:w-auto sm:mb-0"
+                      href="#0"
+                    >
+                      Start free trial
+                    </a>
+                  </div>
+                  <div>
+                    <a
+                      className="btn text-white bg-gray-900 hover:bg-gray-800 w-full sm:w-auto sm:ml-4"
+                      href="#0"
+                    >
+                      Learn more
+                    </a>
+                  </div>
                 </div>
-                <div>
-                  <a
-                    className="btn text-white bg-gray-900 hover:bg-gray-800 w-full sm:w-auto sm:ml-4"
-                    href="#0"
-                  >
-                    Learn more
-                  </a>
-                </div>
-              </div>
+              )}
             </div>
           </div>
 
-          <div className="relative z-10" data-aos="zoom-y-out">
-            <FileUpload />
-          </div>
+          {isAuthenticated && (
+            <div className="relative z-10" data-aos="zoom-y-out">
+              <FileUpload />
+            </div>
+          )}
         </div>
       </div>
     </section>
